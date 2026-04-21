@@ -1,454 +1,318 @@
 
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: var(--font-sans); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-sans); }
 :root {
-  /* LIGHT MODE */
   --color-background-primary: #ffffff;
   --color-background-secondary: #f5f5f5;
   --color-background-tertiary: #eeeeee;
-
   --color-text-primary: #111111;
   --color-text-secondary: #555555;
   --color-text-tertiary: #888888;
-
   --color-border-secondary: #cccccc;
   --color-border-tertiary: #dddddd;
-
   --font-sans: Arial, sans-serif;
-
   --border-radius-md: 8px;
   --border-radius-lg: 14px;
+  --accent: #1A5296;
+  --accent-light: rgba(26,82,150,0.10);
 }
-
-/* DARK MODE */
 body.dark {
   --color-background-primary: #1e1e1e;
   --color-background-secondary: #2a2a2a;
   --color-background-tertiary: #121212;
-
   --color-text-primary: #ffffff;
   --color-text-secondary: #bbbbbb;
   --color-text-tertiary: #888888;
-
   --color-border-secondary: #444444;
   --color-border-tertiary: #333333;
 }
+.page {
+  min-height: 100vh;
+  background: var(--color-background-tertiary);
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  padding: 0;
+}
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  background: var(--color-background-primary);
+}
+.topbar-label { font-size: 12px; color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: uppercase; }
+.topbar-badge {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--color-background-secondary); color: var(--color-text-secondary);
+  padding: 4px 12px; border-radius: var(--border-radius-md);
+  border: 0.5px solid var(--color-border-tertiary);
+  cursor: pointer; background: none; border: none;
+}
+.hero {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 2.5rem 2rem 1.5rem;
+  text-align: center;
+  gap: 12px;
+}
+.eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-tertiary); font-weight: 500; }
+.hero-title {
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-weight: 500; line-height: 1.05;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+.hero-title em { font-style: italic; color: #1A5296; }
+.hero-sub { font-size: 15px; color: var(--color-text-secondary); max-width: 480px; line-height: 1.6; margin-top: 4px; }
+.divider-bar { width: 48px; height: 2px; background: #1A5296; border-radius: 2px; margin-top: 4px; }
 
-  .page {
-    min-height: 100vh;
-    background: var(--color-background-tertiary);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding: 0;
-    position: relative;
-  }
+.def-card {
+  margin: 0 28px 16px;
+  max-width: 860px;
+  width: calc(100% - 56px);
+  align-self: center;
+  margin-left: auto; margin-right: auto;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-left: 3px solid #1A5296;
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem 1.5rem;
+}
+.def-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-tertiary); font-weight: 500; margin-bottom: 8px; }
+.def-text { font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; }
+.def-text span { color: var(--color-text-primary); font-weight: 500; }
 
-  .topbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 28px;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    background: var(--color-background-primary);
-  }
-  .topbar-label { font-size: 12px; color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: uppercase; }
-  .topbar-badge {
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-    background: var(--color-background-secondary); color: var(--color-text-secondary);
-    padding: 4px 12px; border-radius: var(--border-radius-md);
-    border: 0.5px solid var(--color-border-tertiary);
-  }
+.cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 28px;
+  margin: 0 auto 0;
+  max-width: 860px;
+  width: 100%;
+}
+.main-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.18s, transform 0.18s;
+  min-height: 180px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.main-card:hover { transform: translateY(-2px); border-color: #1A5296; }
+.card-tag {
+  display: inline-block; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 500;
+  padding: 4px 12px; border-radius: var(--border-radius-md); width: fit-content;
+  background: var(--accent-light); color: #1A5296;
+}
+.card-title { font-size: 1.25rem; font-weight: 500; line-height: 1.2; color: var(--color-text-primary); }
+.card-desc { font-size: 13.5px; color: var(--color-text-secondary); line-height: 1.65; flex: 1; }
+.card-desc span { color: var(--color-text-primary); font-weight: 500; }
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 4px; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 10px;
+}
+.card-footer-hint { font-size: 11px; color: var(--color-text-tertiary); }
+.card-arrow { width: 22px; height: 22px; border-radius: 50%; border: 0.5px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-text-secondary); }
 
-  .hero {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 2.5rem 2rem 1.5rem;
-    text-align: center;
-    gap: 12px;
-  }
+.bottom-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  padding: 10px 28px 28px; max-width: 860px; width: 100%; margin: 0 auto;
+}
+.action-btn {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: 14px 16px; cursor: pointer; text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.action-btn:hover { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
+.action-btn-icon { font-size: 14px; margin-bottom: 2px; }
+.action-btn-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.action-btn-sub { font-size: 11px; color: var(--color-text-tertiary); }
 
-  .eyebrow {
-    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--color-text-tertiary); font-weight: 500;
-  }
-
-  .hero-title {
-    font-size: clamp(2.4rem, 6vw, 5rem);
-    font-weight: 500;
-    line-height: 1.05;
-    color: var(--color-text-primary);
-    letter-spacing: -0.02em;
-  }
-  .hero-title em { font-style: italic; color: #B8430F; }
-  .hero-title strong { font-weight: 500; color: #1A5296; }
-
-  .hero-sub {
-    font-size: 15px; color: var(--color-text-secondary);
-    max-width: 480px; line-height: 1.6; margin-top: 4px;
-  }
-
-  .divider-bar {
-    width: 48px; height: 2px;
-    background: linear-gradient(90deg, #B8430F, #1A5296);
-    border-radius: 2px; margin-top: 4px;
-  }
-
-  .cards-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 28px;
-    margin: 0 auto;
-    max-width: 860px;
-    width: 100%;
-  }
-
-  .main-card {
-    background: var(--color-background-primary);
-    border: 0.5px solid var(--color-border-tertiary);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    cursor: pointer;
-    transition: border-color 0.18s, transform 0.18s;
-    position: relative;
-    overflow: hidden;
-    min-height: 200px;
-    display: flex; flex-direction: column; gap: 10px;
-  }
-  .main-card:hover { transform: translateY(-2px); }
-  .card-thermo:hover { border-color: #B8430F; }
-  .card-set:hover { border-color: #1A5296; }
-
-  .card-tag {
-    display: inline-block; font-size: 11px; letter-spacing: 0.12em;
-    text-transform: uppercase; font-weight: 500;
-    padding: 4px 12px; border-radius: var(--border-radius-md); width: fit-content;
-  }
-  .tag-thermo { background: rgba(184,67,15,0.1); color: #B8430F; }
-  .tag-set { background: rgba(26,82,150,0.1); color: #1A5296; }
-
-  .card-title {
-    font-size: 1.35rem; font-weight: 500; line-height: 1.2;
-    color: var(--color-text-primary);
-  }
-
-  .card-desc {
-    font-size: 13.5px; color: var(--color-text-secondary); line-height: 1.65;
-    flex: 1;
-  }
-  .card-desc span { color: var(--color-text-primary); font-weight: 500; }
-
-  .card-footer {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 4px;
-    border-top: 0.5px solid var(--color-border-tertiary);
-    padding-top: 10px;
-  }
-  .card-footer-hint { font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 0.05em; }
-  .card-arrow {
-    width: 22px; height: 22px; border-radius: 50%;
-    border: 0.5px solid var(--color-border-secondary);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; color: var(--color-text-secondary);
-  }
-
-  .bottom-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 10px 28px 28px;
-    max-width: 860px;
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  .action-btn {
-    background: var(--color-background-primary);
-    border: 0.5px solid var(--color-border-tertiary);
-    border-radius: var(--border-radius-md);
-    padding: 14px 16px;
-    cursor: pointer;
-    text-align: left;
-    transition: background 0.15s, border-color 0.15s;
-    display: flex; flex-direction: column; gap: 4px;
-  }
-  .action-btn:hover { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
-  .action-btn-icon { font-size: 14px; margin-bottom: 2px; }
-  .action-btn-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
-  .action-btn-sub { font-size: 11px; color: var(--color-text-tertiary); }
-
-  /* OVERLAY */
-  .overlay {
-    display: none;
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 100;
-    align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .overlay.open { display: flex; }
-
-  .modal {
-    background: var(--color-background-primary);
-    border: 0.5px solid var(--color-border-secondary);
-    border-radius: var(--border-radius-lg);
-    width: 100%; max-width: 680px;
-    max-height: 82vh;
-    overflow-y: auto;
-    position: relative;
-  }
-
-  .modal-head {
-    padding: 20px 24px 16px;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
-    position: sticky; top: 0;
-    background: var(--color-background-primary);
-    z-index: 2;
-  }
-  .modal-head h2 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
-  .modal-head p { font-size: 13px; color: var(--color-text-secondary); margin-top: 3px; }
-
-  .close-btn {
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 0.5px solid var(--color-border-secondary);
-    background: transparent; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; color: var(--color-text-secondary);
-    flex-shrink: 0;
-    transition: background 0.15s;
-  }
-  .close-btn:hover { background: var(--color-background-secondary); }
-
-  .modal-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 20px; }
-
-  .info-block { display: flex; flex-direction: column; gap: 8px; }
-  .info-block-label {
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--color-text-tertiary); font-weight: 500;
-  }
-  .info-block p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.65; }
-  .info-block p span { color: var(--color-text-primary); font-weight: 500; }
-
-  .steps-list { display: flex; flex-direction: column; gap: 10px; }
-  .step-item {
-    display: flex; gap: 14px; align-items: flex-start;
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius-md);
-    padding: 12px 14px;
-  }
-  .step-num-circle {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: rgba(184,67,15,0.12); color: #B8430F;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 500; flex-shrink: 0;
-  }
-  .step-content h4 { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
-  .step-content p { font-size: 12.5px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.5; }
-
-  .examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .ex-item {
-    background: var(--color-background-secondary);
-    border-radius: var(--border-radius-md);
-    padding: 10px 12px;
-    display: flex; justify-content: space-between; align-items: center;
-    border: 0.5px solid var(--color-border-tertiary);
-  }
-  .ex-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
-  .ex-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 1px; }
-  .ex-badge {
-    font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 3px 8px; border-radius: var(--border-radius-md); font-weight: 500;
-    flex-shrink: 0;
-  }
-  .badge-t { background: rgba(184,67,15,0.1); color: #B8430F; }
-  .badge-s { background: rgba(26,82,150,0.1); color: #1A5296; }
-
-  .compare-rows { display: flex; flex-direction: column; gap: 0; }
-  .compare-row {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-  .compare-row:last-child { border-bottom: none; }
-  .compare-cell {
-    padding: 10px 12px; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;
-    border-right: 0.5px solid var(--color-border-tertiary);
-  }
-  .compare-cell:last-child { border-right: none; }
-  .compare-cell.prop { font-weight: 500; color: var(--color-text-tertiary); font-size: 12px; background: var(--color-background-secondary); }
-  .compare-head { background: var(--color-background-secondary); }
-  .compare-head .compare-cell { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
-  .compare-head .ct { color: #B8430F; }
-  .compare-head .cs { color: #1A5296; }
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+.overlay.open { display: flex; }
+.modal { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); width: 100%; max-width: 680px; max-height: 82vh; overflow-y: auto; position: relative; }
+.modal-head { padding: 20px 24px 16px; border-bottom: 0.5px solid var(--color-border-tertiary); display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; position: sticky; top: 0; background: var(--color-background-primary); z-index: 2; }
+.modal-head h2 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); }
+.modal-head p { font-size: 13px; color: var(--color-text-secondary); margin-top: 3px; }
+.close-btn { width: 28px; height: 28px; border-radius: 50%; border: 0.5px solid var(--color-border-secondary); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--color-text-secondary); flex-shrink: 0; transition: background 0.15s; }
+.close-btn:hover { background: var(--color-background-secondary); }
+.modal-body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 20px; }
+.info-block { display: flex; flex-direction: column; gap: 8px; }
+.info-block-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-tertiary); font-weight: 500; }
+.info-block p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.65; }
+.info-block p span { color: var(--color-text-primary); font-weight: 500; }
+.steps-list { display: flex; flex-direction: column; gap: 10px; }
+.step-item { display: flex; gap: 14px; align-items: flex-start; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+.step-num-circle { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-light); color: #1A5296; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.step-content h4 { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.step-content p { font-size: 12.5px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.5; }
+.examples-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ex-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; border: 0.5px solid var(--color-border-tertiary); }
+.ex-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+.ex-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 1px; }
+.ex-badge { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: var(--border-radius-md); font-weight: 500; flex-shrink: 0; background: var(--accent-light); color: #1A5296; }
+.compare-rows { display: flex; flex-direction: column; gap: 0; }
+.compare-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.compare-row:last-child { border-bottom: none; }
+.compare-cell { padding: 10px 12px; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; border-right: 0.5px solid var(--color-border-tertiary); }
+.compare-cell:last-child { border-right: none; }
+.compare-cell.prop { font-weight: 500; color: var(--color-text-tertiary); font-size: 12px; background: var(--color-background-secondary); }
+.compare-head { background: var(--color-background-secondary); }
+.compare-head .compare-cell { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; color: #1A5296; }
+.activity-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; border: 0.5px solid var(--color-border-tertiary); }
+.activity-box h4 { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+.activity-box p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.55; }
 </style>
 
 <div class="page" id="app">
   <nav class="topbar">
-    <span class="topbar-label">Materials Technology</span>
-    <button onclick="toggleDarkMode()">🌙</button>
+    <span class="topbar-label">Design &amp; Technology — GCSE</span>
+    <button class="topbar-badge" onclick="document.body.classList.toggle('dark')">Toggle dark mode</button>
   </nav>
 
   <div class="hero">
     <div class="eyebrow">Unit Overview</div>
-    <h1 class="hero-title"><em>Thermo</em><strong>forming</strong><br>&amp; Thermosetting Plastics</h1>
-    <p class="hero-sub">Understanding how heat transforms polymers — from remoldable sheet materials to permanently hardened structures.</p>
+    <h1 class="hero-title"><em>Technology</em><br>Push</h1>
+    <p class="hero-sub">When new technology or materials drive the creation of products — before the public even knows they need them.</p>
     <div class="divider-bar"></div>
   </div>
 
+  <div style="display:flex;justify-content:center;padding:0 28px 16px;">
+    <div class="def-card">
+      <div class="def-label">Definition</div>
+      <p class="def-text"><span>Technology push</span> occurs when <span>advances in science, materials, or manufacturing</span> lead to the development of new products. The innovation comes <span>from the manufacturer or researcher</span>, not in response to consumer demand — the technology itself creates the market.</p>
+    </div>
+  </div>
+
   <div class="cards-row">
-    <div class="main-card card-thermo" onclick="openModal('thermo')">
-      <div class="card-tag tag-thermo">Thermoforming</div>
-      <div class="card-title">Softens.<br>Reshapes.<br>Repeats.</div>
-      <div class="card-desc">Thermoplastics <span>soften when heated</span> and can be moulded or reshaped multiple times. When cooled, they harden again — making them <span>recyclable</span>.</div>
+    <div class="main-card" onclick="openModal('how')">
+      <div class="card-tag">How it works</div>
+      <div class="card-title">Research leads.<br>Products follow.</div>
+      <div class="card-desc">A new material or process is discovered, then manufacturers find ways to <span>commercialise it</span> into products consumers didn't ask for but quickly adopt.</div>
       <div class="card-footer">
-        <span class="card-footer-hint">Tap to explore →</span>
+        <span class="card-footer-hint">Tap to explore</span>
         <div class="card-arrow">→</div>
       </div>
     </div>
-    <div class="main-card card-set" onclick="openModal('set')">
-      <div class="card-tag tag-set">Thermosetting</div>
-      <div class="card-title">Hardens.<br>Permanently.<br>Forever.</div>
-      <div class="card-desc">Thermosets undergo an <span>irreversible chemical change</span> when heated, forming a rigid, permanent shape. They <span>cannot be remelted</span> or reformed.</div>
+    <div class="main-card" onclick="openModal('vs')">
+      <div class="card-tag">Push vs Pull</div>
+      <div class="card-title">Supply driven,<br>not demand driven.</div>
+      <div class="card-desc">Technology push is the <span>opposite of market pull</span>, where consumers identify a need first. Understanding the difference is key for your exam.</div>
       <div class="card-footer">
-        <span class="card-footer-hint">Tap to explore →</span>
+        <span class="card-footer-hint">Tap to explore</span>
         <div class="card-arrow">→</div>
       </div>
     </div>
   </div>
 
   <div class="bottom-row">
-    <button class="action-btn" onclick="openModal('process')">
-      <div class="action-btn-icon">⚙</div>
-      <div class="action-btn-label">Vacuum forming process</div>
-      <div class="action-btn-sub">4-step breakdown</div>
-    </button>
     <button class="action-btn" onclick="openModal('examples')">
       <div class="action-btn-icon">◉</div>
       <div class="action-btn-label">Real-world examples</div>
-      <div class="action-btn-sub">Products & materials</div>
+      <div class="action-btn-sub">Products &amp; innovations</div>
     </button>
-    <button class="action-btn" onclick="openModal('compare')">
-      <div class="action-btn-icon">⇌</div>
-      <div class="action-btn-label">Key differences</div>
-      <div class="action-btn-sub">Side-by-side comparison</div>
+    <button class="action-btn" onclick="openModal('impacts')">
+      <div class="action-btn-icon">⬡</div>
+      <div class="action-btn-label">Impacts &amp; effects</div>
+      <div class="action-btn-sub">Social, economic &amp; environmental</div>
+    </button>
+    <button class="action-btn" onclick="openModal('activity')">
+      <div class="action-btn-icon">✦</div>
+      <div class="action-btn-label">Card sort activity</div>
+      <div class="action-btn-sub">Classroom task guide</div>
     </button>
   </div>
 </div>
 
-<!-- THERMO MODAL -->
-<div class="overlay" id="modal-thermo" onclick="closeOnBg(event,'modal-thermo')">
+<!-- HOW IT WORKS MODAL -->
+<div class="overlay" id="modal-how" onclick="closeOnBg(event,'modal-how')">
   <div class="modal">
     <div class="modal-head">
-      <div>
-        <h2>Thermoforming (Thermoplastics)</h2>
-        <p>Polymers that soften with heat and can be reshaped repeatedly</p>
-      </div>
-      <button class="close-btn" onclick="closeModal('modal-thermo')">✕</button>
+      <div><h2>How technology push works</h2><p>From lab discovery to consumer product</p></div>
+      <button class="close-btn" onclick="closeModal('modal-how')">✕</button>
     </div>
     <div class="modal-body">
       <div class="info-block">
-        <div class="info-block-label">Definition</div>
-        <p>Thermoforming refers to <span>heating a thermoplastic sheet</span> until it becomes pliable, then shaping it over a mould and cooling it to retain that shape. The plastic can be <span>reheated and reshaped</span> multiple times without permanent chemical change.</p>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Key properties</div>
-        <p><span>Reversible</span> — heat softens, cooling hardens, repeatedly. <span>Recyclable</span> — can be melted down and reprocessed. Generally <span>flexible and impact resistant</span>. Softens at moderate temperatures.</p>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Common materials</div>
-        <div class="examples-grid">
-          <div class="ex-item"><div><div class="ex-name">Acrylic (PMMA)</div><div class="ex-sub">Signage, baths, displays</div></div><span class="ex-badge badge-t">PMMA</span></div>
-          <div class="ex-item"><div><div class="ex-name">PVC</div><div class="ex-sub">Pipes, gutters, window frames</div></div><span class="ex-badge badge-t">PVC</span></div>
-          <div class="ex-item"><div><div class="ex-name">Polypropylene</div><div class="ex-sub">Car bumpers, packaging</div></div><span class="ex-badge badge-t">PP</span></div>
-          <div class="ex-item"><div><div class="ex-name">HIPS</div><div class="ex-sub">Yoghurt pots, trays</div></div><span class="ex-badge badge-t">HIPS</span></div>
-          <div class="ex-item"><div><div class="ex-name">PET</div><div class="ex-sub">Drinks bottles, packaging</div></div><span class="ex-badge badge-t">PET</span></div>
-          <div class="ex-item"><div><div class="ex-name">LDPE</div><div class="ex-sub">Shopping bags, film</div></div><span class="ex-badge badge-t">LDPE</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SET MODAL -->
-<div class="overlay" id="modal-set" onclick="closeOnBg(event,'modal-set')">
-  <div class="modal">
-    <div class="modal-head">
-      <div>
-        <h2>Thermosetting plastics</h2>
-        <p>Polymers that permanently harden through an irreversible chemical reaction</p>
-      </div>
-      <button class="close-btn" onclick="closeModal('modal-set')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="info-block">
-        <div class="info-block-label">Definition</div>
-        <p>Thermosetting polymers undergo a <span>permanent chemical change (cross-linking)</span> when heated during moulding. Once set, the molecular structure is fixed — they <span>cannot be remelted, recycled, or reshaped</span>.</p>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Key properties</div>
-        <p><span>Irreversible</span> — the chemical change is permanent. <span>Hard and rigid</span> once set. Excellent <span>heat resistance</span> — maintains shape under high temperatures. Typically brittle under stress.</p>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Common materials</div>
-        <div class="examples-grid">
-          <div class="ex-item"><div><div class="ex-name">Urea formaldehyde</div><div class="ex-sub">Plug sockets, switches</div></div><span class="ex-badge badge-s">UF</span></div>
-          <div class="ex-item"><div><div class="ex-name">Epoxy resin</div><div class="ex-sub">Adhesives, coatings</div></div><span class="ex-badge badge-s">EP</span></div>
-          <div class="ex-item"><div><div class="ex-name">Polyester resin</div><div class="ex-sub">Boat hulls, GRP panels</div></div><span class="ex-badge badge-s">GRP</span></div>
-          <div class="ex-item"><div><div class="ex-name">Melamine formaldehyde</div><div class="ex-sub">Kitchen worktops</div></div><span class="ex-badge badge-s">MF</span></div>
-          <div class="ex-item"><div><div class="ex-name">Phenol formaldehyde</div><div class="ex-sub">Early electrical casings</div></div><span class="ex-badge badge-s">PF</span></div>
-          <div class="ex-item"><div><div class="ex-name">Polyurethane</div><div class="ex-sub">Foam insulation, coatings</div></div><span class="ex-badge badge-s">PU</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PROCESS MODAL -->
-<div class="overlay" id="modal-process" onclick="closeOnBg(event,'modal-process')">
-  <div class="modal">
-    <div class="modal-head">
-      <div>
-        <h2>Vacuum forming process</h2>
-        <p>How thermoforming is used to shape plastic sheets over a mould</p>
-      </div>
-      <button class="close-btn" onclick="closeModal('modal-process')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="info-block">
-        <div class="info-block-label">Overview</div>
-        <p>Vacuum forming is a thermoforming technique used to shape thermoplastic sheets. It uses <span>heat + atmospheric pressure</span> (via vacuum) to pull softened plastic around a mould.</p>
+        <div class="info-block-label">The process</div>
+        <p>Technology push follows a <span>supply-led chain</span>: a new capability is developed, then manufacturers and designers work out how to turn it into a sellable product. Consumer desire comes <span>after</span> the product exists.</p>
       </div>
       <div class="steps-list">
         <div class="step-item">
           <div class="step-num-circle">1</div>
-          <div class="step-content">
-            <h4>Heat the sheet</h4>
-            <p>A thermoplastic sheet is clamped in a frame and heated until soft and pliable — typically 160–180°C for acrylic (PMMA).</p>
-          </div>
+          <div class="step-content"><h4>Scientific or material breakthrough</h4><p>Researchers discover a new material, process, or technology — e.g. graphene, LED technology, or carbon fibre composites.</p></div>
         </div>
         <div class="step-item">
           <div class="step-num-circle">2</div>
-          <div class="step-content">
-            <h4>Position the mould</h4>
-            <p>A rigid mould (hard tool) is placed below the softened sheet. Its shape determines the final form of the product.</p>
-          </div>
+          <div class="step-content"><h4>Potential applications identified</h4><p>Engineers and designers explore how the new capability could be used in products, even if no customer has requested it.</p></div>
         </div>
         <div class="step-item">
           <div class="step-num-circle">3</div>
-          <div class="step-content">
-            <h4>Apply vacuum</h4>
-            <p>Air is evacuated from below, pulling the soft plastic tightly around every contour of the mould using atmospheric pressure.</p>
-          </div>
+          <div class="step-content"><h4>Product is developed and launched</h4><p>A product is manufactured and brought to market. Marketing then works to <span>create demand</span> for something consumers didn't previously know they wanted.</p></div>
         </div>
         <div class="step-item">
           <div class="step-num-circle">4</div>
-          <div class="step-content">
-            <h4>Cool & remove</h4>
-            <p>The plastic cools and rigidifies, retaining the mould's shape. It is then released and trimmed to produce the finished component.</p>
+          <div class="step-content"><h4>Consumer adoption</h4><p>The public begins using the product and it may become essential — like smartphones, which pushed entirely new industries into existence.</p></div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Key point for your exam</div>
+        <p>Technology push is <span>innovation-led</span>. The question to ask is: <span>"Did the technology come before the demand?"</span> If yes, it is technology push.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PUSH VS PULL MODAL -->
+<div class="overlay" id="modal-vs" onclick="closeOnBg(event,'modal-vs')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>Technology push vs market pull</h2><p>The two key drivers of new product development</p></div>
+      <button class="close-btn" onclick="closeModal('modal-vs')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden;">
+        <div class="compare-rows">
+          <div class="compare-row compare-head">
+            <div class="compare-cell prop">Feature</div>
+            <div class="compare-cell">Technology push</div>
+            <div class="compare-cell">Market pull</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell prop">Starting point</div>
+            <div class="compare-cell">New technology or material</div>
+            <div class="compare-cell">Consumer need or gap</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell prop">Who drives it</div>
+            <div class="compare-cell">Researchers / manufacturers</div>
+            <div class="compare-cell">Consumers / market research</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell prop">Demand</div>
+            <div class="compare-cell">Created after the product exists</div>
+            <div class="compare-cell">Exists before the product</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell prop">Risk</div>
+            <div class="compare-cell">Higher — public may not adopt it</div>
+            <div class="compare-cell">Lower — known demand exists</div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-cell prop">Example</div>
+            <div class="compare-cell">Smartphone touchscreens</div>
+            <div class="compare-cell">Eco-friendly packaging</div>
           </div>
         </div>
       </div>
       <div class="info-block">
-        <div class="info-block-label">Typical applications</div>
-        <p>Packaging trays, product enclosures, baths & shower trays, car dashboards, chocolate box inserts, and school DT projects.</p>
+        <div class="info-block-label">Remember</div>
+        <p>In reality, most products involve <span>both</span> push and pull factors. The exam often asks you to <span>identify which is dominant</span> and justify your answer with evidence from a context.</p>
       </div>
     </div>
   </div>
@@ -458,88 +322,94 @@ body.dark {
 <div class="overlay" id="modal-examples" onclick="closeOnBg(event,'modal-examples')">
   <div class="modal">
     <div class="modal-head">
-      <div>
-        <h2>Real-world examples</h2>
-        <p>Common products made from thermoforming and thermosetting plastics</p>
-      </div>
+      <div><h2>Real-world examples</h2><p>Products and innovations driven by technology push</p></div>
       <button class="close-btn" onclick="closeModal('modal-examples')">✕</button>
     </div>
     <div class="modal-body">
       <div class="info-block">
-        <div class="info-block-label">Thermoplastics — remoldable · recyclable</div>
+        <div class="info-block-label">Materials &amp; manufacturing</div>
         <div class="examples-grid">
-          <div class="ex-item"><div><div class="ex-name">Plastic bottle</div><div class="ex-sub">PET</div></div><span class="ex-badge badge-t">PET</span></div>
-          <div class="ex-item"><div><div class="ex-name">Shopping bag</div><div class="ex-sub">LDPE</div></div><span class="ex-badge badge-t">LDPE</span></div>
-          <div class="ex-item"><div><div class="ex-name">Drainpipe</div><div class="ex-sub">PVC</div></div><span class="ex-badge badge-t">PVC</span></div>
-          <div class="ex-item"><div><div class="ex-name">Car bumper</div><div class="ex-sub">Polypropylene</div></div><span class="ex-badge badge-t">PP</span></div>
-          <div class="ex-item"><div><div class="ex-name">Acrylic bath</div><div class="ex-sub">PMMA</div></div><span class="ex-badge badge-t">PMMA</span></div>
-          <div class="ex-item"><div><div class="ex-name">Yoghurt pot</div><div class="ex-sub">HIPS</div></div><span class="ex-badge badge-t">HIPS</span></div>
+          <div class="ex-item"><div><div class="ex-name">Carbon fibre</div><div class="ex-sub">Aerospace → sports equipment</div></div><span class="ex-badge">Push</span></div>
+          <div class="ex-item"><div><div class="ex-name">Graphene</div><div class="ex-sub">Emerging applications in electronics</div></div><span class="ex-badge">Push</span></div>
+          <div class="ex-item"><div><div class="ex-name">Kevlar</div><div class="ex-sub">Lab discovery → body armour</div></div><span class="ex-badge">Push</span></div>
+          <div class="ex-item"><div><div class="ex-name">3D printing</div><div class="ex-sub">Prototyping → medical implants</div></div><span class="ex-badge">Push</span></div>
         </div>
       </div>
       <div class="info-block">
-        <div class="info-block-label">Thermosetting — permanent · cannot remelt</div>
+        <div class="info-block-label">Consumer technology</div>
         <div class="examples-grid">
-          <div class="ex-item"><div><div class="ex-name">Plug socket</div><div class="ex-sub">Urea formaldehyde</div></div><span class="ex-badge badge-s">UF</span></div>
-          <div class="ex-item"><div><div class="ex-name">Telephone casing</div><div class="ex-sub">Phenol formaldehyde</div></div><span class="ex-badge badge-s">PF</span></div>
-          <div class="ex-item"><div><div class="ex-name">Boat hull</div><div class="ex-sub">Polyester resin</div></div><span class="ex-badge badge-s">GRP</span></div>
-          <div class="ex-item"><div><div class="ex-name">Epoxy adhesive</div><div class="ex-sub">Epoxy resin</div></div><span class="ex-badge badge-s">EP</span></div>
-          <div class="ex-item"><div><div class="ex-name">Kitchen worktop</div><div class="ex-sub">Melamine formaldehyde</div></div><span class="ex-badge badge-s">MF</span></div>
-          <div class="ex-item"><div><div class="ex-name">Hard hat</div><div class="ex-sub">GRP composite</div></div><span class="ex-badge badge-s">GRP</span></div>
+          <div class="ex-item"><div><div class="ex-name">Touchscreen</div><div class="ex-sub">Research lab → smartphone</div></div><span class="ex-badge">Push</span></div>
+          <div class="ex-item"><div><div class="ex-name">LED lighting</div><div class="ex-sub">Semiconductor research → bulbs</div></div><span class="ex-badge">Push</span></div>
+          <div class="ex-item"><div><div class="ex-name">GPS</div><div class="ex-sub">Military tech → consumer navigation</div></div><span class="ex-badge">Push</span></div>
+          <div class="ex-item"><div><div class="ex-name">Velcro</div><div class="ex-sub">Nature observation → fastening</div></div><span class="ex-badge">Push</span></div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Pattern to spot</div>
+        <p>Technology push examples often follow the pattern: <span>research or accident → discovery → product application</span>. Nobody asked for Velcro — it was invented first, then marketed.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACTS MODAL -->
+<div class="overlay" id="modal-impacts" onclick="closeOnBg(event,'modal-impacts')">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h2>Impacts of technology push</h2><p>Social, economic and environmental effects</p></div>
+      <button class="close-btn" onclick="closeModal('modal-impacts')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="info-block">
+        <div class="info-block-label">Positive impacts</div>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num-circle">+</div><div class="step-content"><h4>Improved quality of life</h4><p>New materials and technologies create products that solve problems people didn't know could be solved — e.g. MRI scanners, lightweight prosthetics.</p></div></div>
+          <div class="step-item"><div class="step-num-circle">+</div><div class="step-content"><h4>Economic growth</h4><p>New industries and jobs are created around emerging technologies, boosting GDP and creating skilled employment.</p></div></div>
+          <div class="step-item"><div class="step-num-circle">+</div><div class="step-content"><h4>More sustainable materials</h4><p>Technology push has produced alternatives to harmful materials — e.g. biodegradable plastics, solar cell advances.</p></div></div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Negative impacts</div>
+        <div class="steps-list">
+          <div class="step-item"><div class="step-num-circle">–</div><div class="step-content"><h4>Planned obsolescence</h4><p>Rapid tech advancement encourages consumers to discard working products for newer ones, increasing electronic waste.</p></div></div>
+          <div class="step-item"><div class="step-num-circle">–</div><div class="step-content"><h4>Job displacement</h4><p>Automation driven by technology push can replace workers, particularly in manufacturing.</p></div></div>
+          <div class="step-item"><div class="step-num-circle">–</div><div class="step-content"><h4>Unequal access</h4><p>New technology is often expensive at launch, meaning less affluent communities benefit later — widening the inequality gap.</p></div></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- COMPARE MODAL -->
-<div class="overlay" id="modal-compare" onclick="closeOnBg(event,'modal-compare')">
+<!-- ACTIVITY MODAL -->
+<div class="overlay" id="modal-activity" onclick="closeOnBg(event,'modal-activity')">
   <div class="modal">
     <div class="modal-head">
-      <div>
-        <h2>Key differences</h2>
-        <p>Thermoforming vs thermosetting — side by side</p>
-      </div>
-      <button class="close-btn" onclick="closeModal('modal-compare')">✕</button>
+      <div><h2>Card sort activity</h2><p>Teacher guide — classroom physical activity</p></div>
+      <button class="close-btn" onclick="closeModal('modal-activity')">✕</button>
     </div>
     <div class="modal-body">
-      <div style="border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); overflow: hidden;">
-        <div class="compare-rows">
-          <div class="compare-row compare-head">
-            <div class="compare-cell prop">Property</div>
-            <div class="compare-cell ct">Thermoforming</div>
-            <div class="compare-cell cs">Thermosetting</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">When heated</div>
-            <div class="compare-cell">Softens, becomes pliable</div>
-            <div class="compare-cell">Hardens permanently</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Remoldable?</div>
-            <div class="compare-cell">Yes — can be reheated &amp; reshaped</div>
-            <div class="compare-cell">No — shape is permanent</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Recyclable?</div>
-            <div class="compare-cell">Generally yes</div>
-            <div class="compare-cell">Very difficult — usually no</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Strength</div>
-            <div class="compare-cell">Flexible, impact resistant</div>
-            <div class="compare-cell">Rigid, hard, brittle</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Heat resistance</div>
-            <div class="compare-cell">Lower — softens with heat</div>
-            <div class="compare-cell">Higher — stable under heat</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Typical uses</div>
-            <div class="compare-cell">Packaging, pipes, car parts</div>
-            <div class="compare-cell">Electrical fittings, adhesives</div>
-          </div>
+      <div class="info-block">
+        <div class="info-block-label">Objective</div>
+        <p>Students sort a set of product cards into two categories: <span>Technology Push</span> or <span>Market Pull</span> — and justify their decisions. Some cards are deliberately ambiguous to prompt discussion.</p>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Suggested category headers (print these)</div>
+        <div class="examples-grid">
+          <div class="ex-item" style="border-left: 3px solid #1A5296;"><div><div class="ex-name">Technology Push</div><div class="ex-sub">Innovation came first</div></div></div>
+          <div class="ex-item" style="border-left: 3px solid #B8430F;"><div><div class="ex-name">Market Pull</div><div class="ex-sub">Demand came first</div></div></div>
         </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Suggested product cards to print and cut</div>
+        <div class="steps-list">
+          <div class="activity-box"><h4>Clear technology push examples</h4><p>Carbon fibre bikes · LED light bulbs · Touchscreen smartphones · Kevlar body armour · GPS navigation · 3D printed medical implants · Graphene-coated products</p></div>
+          <div class="activity-box"><h4>Clear market pull examples</h4><p>Eco-friendly packaging · Reusable coffee cups · Larger phone batteries · Allergen-free food labelling · Adjustable car seats · Quieter lawnmowers</p></div>
+          <div class="activity-box"><h4>Deliberately ambiguous cards (for discussion)</h4><p>Electric cars · Smart watches · Noise-cancelling headphones · Biodegradable plastics · Foldable phones</p></div>
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">Extension question</div>
+        <p>Ask students: <span>"Can a product be both?"</span> Use electric cars as the discussion example — battery tech was pushed by research, but demand for lower emissions also pulled it.</p>
       </div>
     </div>
   </div>
@@ -547,19 +417,12 @@ body.dark {
 
 <script>
 function openModal(type) {
-  const map = { thermo:'modal-thermo', set:'modal-set', process:'modal-process', examples:'modal-examples', compare:'modal-compare' };
+  const map = { how:'modal-how', vs:'modal-vs', examples:'modal-examples', impacts:'modal-impacts', activity:'modal-activity' };
   document.getElementById(map[type]).classList.add('open');
 }
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
-function closeOnBg(e, id) {
-  if (e.target === document.getElementById(id)) closeModal(id);
-}
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function closeOnBg(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') document.querySelectorAll('.overlay.open').forEach(o => o.classList.remove('open'));
 });
-function toggleDarkMode() {
-  document.body.classList.toggle('dark');
-}
 </script>
