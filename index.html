@@ -27,113 +27,38 @@ body.dark {
   --color-border-secondary: #444444;
   --color-border-tertiary: #333333;
 }
-.page {
-  min-height: 100vh;
-  background: var(--color-background-tertiary);
-  display: grid;
-  grid-template-rows: auto auto auto auto;
-  padding: 0;
-}
-.topbar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 28px;
-  border-bottom: 0.5px solid var(--color-border-tertiary);
-  background: var(--color-background-primary);
-}
+.page { min-height: 100vh; background: var(--color-background-tertiary); display: grid; grid-template-rows: auto auto auto auto; padding: 0; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
 .topbar-label { font-size: 12px; color: var(--color-text-secondary); letter-spacing: 0.08em; text-transform: uppercase; }
-.topbar-badge {
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  background: var(--color-background-secondary); color: var(--color-text-secondary);
-  padding: 4px 12px; border-radius: var(--border-radius-md);
-  border: 0.5px solid var(--color-border-tertiary);
-  cursor: pointer; background: none; border: none;
-}
-.hero {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 2.5rem 2rem 1.5rem;
-  text-align: center;
-  gap: 12px;
-}
+.topbar-badge { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 12px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); cursor: pointer; background: none; color: var(--color-text-secondary); }
+.hero { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2.5rem 2rem 1.5rem; text-align: center; gap: 12px; }
 .eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-text-tertiary); font-weight: 500; }
-.hero-title {
-  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
-  font-weight: 500; line-height: 1.05;
-  color: var(--color-text-primary);
-  letter-spacing: -0.02em;
-}
+.hero-title { font-size: clamp(2.2rem, 5.5vw, 4.5rem); font-weight: 500; line-height: 1.05; color: var(--color-text-primary); letter-spacing: -0.02em; }
 .hero-title em { font-style: italic; color: #1A5296; }
 .hero-sub { font-size: 15px; color: var(--color-text-secondary); max-width: 480px; line-height: 1.6; margin-top: 4px; }
 .divider-bar { width: 48px; height: 2px; background: #1A5296; border-radius: 2px; margin-top: 4px; }
-
-.def-card {
-  margin: 0 28px 16px;
-  max-width: 860px;
-  width: calc(100% - 56px);
-  align-self: center;
-  margin-left: auto; margin-right: auto;
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-left: 3px solid #1A5296;
-  border-radius: var(--border-radius-lg);
-  padding: 1.25rem 1.5rem;
-}
+.def-card { margin: 0 auto 16px; max-width: 860px; width: calc(100% - 56px); background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-left: 3px solid #1A5296; border-radius: var(--border-radius-lg); padding: 1.25rem 1.5rem; }
 .def-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-tertiary); font-weight: 500; margin-bottom: 8px; }
 .def-text { font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; }
 .def-text span { color: var(--color-text-primary); font-weight: 500; }
-
-.cards-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 0 28px;
-  margin: 0 auto 0;
-  max-width: 860px;
-  width: 100%;
-}
-.main-card {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-lg);
-  padding: 1.5rem;
-  cursor: pointer;
-  transition: border-color 0.18s, transform 0.18s;
-  min-height: 180px;
-  display: flex; flex-direction: column; gap: 10px;
-}
+.cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 28px; margin: 0 auto; max-width: 860px; width: 100%; }
+.main-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.5rem; cursor: pointer; transition: border-color 0.18s, transform 0.18s; min-height: 180px; display: flex; flex-direction: column; gap: 10px; }
 .main-card:hover { transform: translateY(-2px); border-color: #1A5296; }
-.card-tag {
-  display: inline-block; font-size: 11px; letter-spacing: 0.12em;
-  text-transform: uppercase; font-weight: 500;
-  padding: 4px 12px; border-radius: var(--border-radius-md); width: fit-content;
-  background: var(--accent-light); color: #1A5296;
-}
+.card-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; padding: 4px 12px; border-radius: var(--border-radius-md); width: fit-content; background: var(--accent-light); color: #1A5296; }
 .card-title { font-size: 1.25rem; font-weight: 500; line-height: 1.2; color: var(--color-text-primary); }
 .card-desc { font-size: 13.5px; color: var(--color-text-secondary); line-height: 1.65; flex: 1; }
 .card-desc span { color: var(--color-text-primary); font-weight: 500; }
-.card-footer {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 4px; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 10px;
-}
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 10px; }
 .card-footer-hint { font-size: 11px; color: var(--color-text-tertiary); }
 .card-arrow { width: 22px; height: 22px; border-radius: 50%; border: 0.5px solid var(--color-border-secondary); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--color-text-secondary); }
-
-.bottom-row {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-  padding: 10px 28px 28px; max-width: 860px; width: 100%; margin: 0 auto;
-}
-.action-btn {
-  background: var(--color-background-primary);
-  border: 0.5px solid var(--color-border-tertiary);
-  border-radius: var(--border-radius-md);
-  padding: 14px 16px; cursor: pointer; text-align: left;
-  transition: background 0.15s, border-color 0.15s;
-  display: flex; flex-direction: column; gap: 4px;
-}
+.bottom-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 28px 28px; max-width: 860px; width: 100%; margin: 0 auto; }
+.action-btn { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 14px 16px; cursor: pointer; text-align: left; transition: background 0.15s, border-color 0.15s; display: flex; flex-direction: column; gap: 4px; }
 .action-btn:hover { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
 .action-btn-icon { font-size: 14px; margin-bottom: 2px; }
 .action-btn-label { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
 .action-btn-sub { font-size: 11px; color: var(--color-text-tertiary); }
-
+.action-btn.answers-btn { border-color: #1A5296; border-width: 1px; }
+.action-btn.answers-btn .action-btn-label { color: #1A5296; }
 .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
 .overlay.open { display: flex; }
 .modal { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-lg); width: 100%; max-width: 680px; max-height: 82vh; overflow-y: auto; position: relative; }
@@ -157,7 +82,7 @@ body.dark {
 .ex-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
 .ex-sub { font-size: 11px; color: var(--color-text-tertiary); margin-top: 1px; }
 .ex-badge { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: var(--border-radius-md); font-weight: 500; flex-shrink: 0; background: var(--accent-light); color: #1A5296; }
-.compare-rows { display: flex; flex-direction: column; gap: 0; }
+.compare-rows { display: flex; flex-direction: column; }
 .compare-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 0.5px solid var(--color-border-tertiary); }
 .compare-row:last-child { border-bottom: none; }
 .compare-cell { padding: 10px 12px; font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; border-right: 0.5px solid var(--color-border-tertiary); }
@@ -165,9 +90,20 @@ body.dark {
 .compare-cell.prop { font-weight: 500; color: var(--color-text-tertiary); font-size: 12px; background: var(--color-background-secondary); }
 .compare-head { background: var(--color-background-secondary); }
 .compare-head .compare-cell { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; color: #1A5296; }
-.activity-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; border: 0.5px solid var(--color-border-tertiary); }
-.activity-box h4 { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
-.activity-box p { font-size: 13px; color: var(--color-text-secondary); line-height: 1.55; }
+
+/* Answer pairs */
+.answer-pair {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px;
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 12px 14px;
+  border: 0.5px solid var(--color-border-tertiary);
+}
+.answer-pair:nth-child(odd) { background: var(--color-background-primary); }
+.pair-tech { font-size: 13px; color: var(--color-text-secondary); line-height: 1.45; }
+.pair-arrow { font-size: 16px; color: #1A5296; font-weight: 500; flex-shrink: 0; }
+.pair-product { font-size: 13px; font-weight: 500; color: var(--color-text-primary); line-height: 1.45; text-align: right; }
+.pair-num { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 2px; }
 </style>
 
 <div class="page" id="app">
@@ -175,42 +111,32 @@ body.dark {
     <span class="topbar-label">Design &amp; Technology — GCSE</span>
     <button class="topbar-badge" onclick="document.body.classList.toggle('dark')">Toggle dark mode</button>
   </nav>
-
   <div class="hero">
     <div class="eyebrow">Unit Overview</div>
     <h1 class="hero-title"><em>Technology</em><br>Push</h1>
-    <p class="hero-sub">When new technology or materials drive the creation of products — before the public even knows they need them.</p>
+    <p class="hero-sub">When new technology or materials drive the creation of products before the public even knows they need them.</p>
     <div class="divider-bar"></div>
   </div>
-
   <div style="display:flex;justify-content:center;padding:0 28px 16px;">
     <div class="def-card">
       <div class="def-label">Definition</div>
       <p class="def-text"><span>Technology push</span> occurs when <span>advances in science, materials, or manufacturing</span> lead to the development of new products. The innovation comes <span>from the manufacturer or researcher</span>, not in response to consumer demand — the technology itself creates the market.</p>
     </div>
   </div>
-
   <div class="cards-row">
     <div class="main-card" onclick="openModal('how')">
       <div class="card-tag">How it works</div>
       <div class="card-title">Research leads.<br>Products follow.</div>
       <div class="card-desc">A new material or process is discovered, then manufacturers find ways to <span>commercialise it</span> into products consumers didn't ask for but quickly adopt.</div>
-      <div class="card-footer">
-        <span class="card-footer-hint">Tap to explore</span>
-        <div class="card-arrow">→</div>
-      </div>
+      <div class="card-footer"><span class="card-footer-hint">Tap to explore</span><div class="card-arrow">→</div></div>
     </div>
     <div class="main-card" onclick="openModal('vs')">
       <div class="card-tag">Push vs Pull</div>
       <div class="card-title">Supply driven,<br>not demand driven.</div>
       <div class="card-desc">Technology push is the <span>opposite of market pull</span>, where consumers identify a need first. Understanding the difference is key for your exam.</div>
-      <div class="card-footer">
-        <span class="card-footer-hint">Tap to explore</span>
-        <div class="card-arrow">→</div>
-      </div>
+      <div class="card-footer"><span class="card-footer-hint">Tap to explore</span><div class="card-arrow">→</div></div>
     </div>
   </div>
-
   <div class="bottom-row">
     <button class="action-btn" onclick="openModal('examples')">
       <div class="action-btn-icon">◉</div>
@@ -222,10 +148,10 @@ body.dark {
       <div class="action-btn-label">Impacts &amp; effects</div>
       <div class="action-btn-sub">Social, economic &amp; environmental</div>
     </button>
-    <button class="action-btn" onclick="openModal('activity')">
-      <div class="action-btn-icon">✦</div>
-      <div class="action-btn-label">Card sort activity</div>
-      <div class="action-btn-sub">Classroom task guide</div>
+    <button class="action-btn answers-btn" onclick="openModal('answers')">
+      <div class="action-btn-icon">✓</div>
+      <div class="action-btn-label">Match-up answers</div>
+      <div class="action-btn-sub">Check your worksheet</div>
     </button>
   </div>
 </div>
@@ -243,22 +169,10 @@ body.dark {
         <p>Technology push follows a <span>supply-led chain</span>: a new capability is developed, then manufacturers and designers work out how to turn it into a sellable product. Consumer desire comes <span>after</span> the product exists.</p>
       </div>
       <div class="steps-list">
-        <div class="step-item">
-          <div class="step-num-circle">1</div>
-          <div class="step-content"><h4>Scientific or material breakthrough</h4><p>Researchers discover a new material, process, or technology — e.g. graphene, LED technology, or carbon fibre composites.</p></div>
-        </div>
-        <div class="step-item">
-          <div class="step-num-circle">2</div>
-          <div class="step-content"><h4>Potential applications identified</h4><p>Engineers and designers explore how the new capability could be used in products, even if no customer has requested it.</p></div>
-        </div>
-        <div class="step-item">
-          <div class="step-num-circle">3</div>
-          <div class="step-content"><h4>Product is developed and launched</h4><p>A product is manufactured and brought to market. Marketing then works to <span>create demand</span> for something consumers didn't previously know they wanted.</p></div>
-        </div>
-        <div class="step-item">
-          <div class="step-num-circle">4</div>
-          <div class="step-content"><h4>Consumer adoption</h4><p>The public begins using the product and it may become essential — like smartphones, which pushed entirely new industries into existence.</p></div>
-        </div>
+        <div class="step-item"><div class="step-num-circle">1</div><div class="step-content"><h4>Scientific or material breakthrough</h4><p>Researchers discover a new material, process, or technology — e.g. graphene, LED technology, or carbon fibre composites.</p></div></div>
+        <div class="step-item"><div class="step-num-circle">2</div><div class="step-content"><h4>Potential applications identified</h4><p>Engineers and designers explore how the new capability could be used in products, even if no customer has requested it.</p></div></div>
+        <div class="step-item"><div class="step-num-circle">3</div><div class="step-content"><h4>Product is developed and launched</h4><p>A product is manufactured and brought to market. Marketing then works to <span>create demand</span> for something consumers didn't previously know they wanted.</p></div></div>
+        <div class="step-item"><div class="step-num-circle">4</div><div class="step-content"><h4>Consumer adoption</h4><p>The public begins using the product and it may become essential — like smartphones, which pushed entirely new industries into existence.</p></div></div>
       </div>
       <div class="info-block">
         <div class="info-block-label">Key point for your exam</div>
@@ -283,31 +197,11 @@ body.dark {
             <div class="compare-cell">Technology push</div>
             <div class="compare-cell">Market pull</div>
           </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Starting point</div>
-            <div class="compare-cell">New technology or material</div>
-            <div class="compare-cell">Consumer need or gap</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Who drives it</div>
-            <div class="compare-cell">Researchers / manufacturers</div>
-            <div class="compare-cell">Consumers / market research</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Demand</div>
-            <div class="compare-cell">Created after the product exists</div>
-            <div class="compare-cell">Exists before the product</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Risk</div>
-            <div class="compare-cell">Higher — public may not adopt it</div>
-            <div class="compare-cell">Lower — known demand exists</div>
-          </div>
-          <div class="compare-row">
-            <div class="compare-cell prop">Example</div>
-            <div class="compare-cell">Smartphone touchscreens</div>
-            <div class="compare-cell">Eco-friendly packaging</div>
-          </div>
+          <div class="compare-row"><div class="compare-cell prop">Starting point</div><div class="compare-cell">New technology or material</div><div class="compare-cell">Consumer need or gap</div></div>
+          <div class="compare-row"><div class="compare-cell prop">Who drives it</div><div class="compare-cell">Researchers / manufacturers</div><div class="compare-cell">Consumers / market research</div></div>
+          <div class="compare-row"><div class="compare-cell prop">Demand</div><div class="compare-cell">Created after the product exists</div><div class="compare-cell">Exists before the product</div></div>
+          <div class="compare-row"><div class="compare-cell prop">Risk</div><div class="compare-cell">Higher — public may not adopt it</div><div class="compare-cell">Lower — known demand exists</div></div>
+          <div class="compare-row"><div class="compare-cell prop">Example</div><div class="compare-cell">Smartphone touchscreens</div><div class="compare-cell">Eco-friendly packaging</div></div>
         </div>
       </div>
       <div class="info-block">
@@ -380,36 +274,71 @@ body.dark {
   </div>
 </div>
 
-<!-- ACTIVITY MODAL -->
-<div class="overlay" id="modal-activity" onclick="closeOnBg(event,'modal-activity')">
+<!-- ANSWERS MODAL -->
+<div class="overlay" id="modal-answers" onclick="closeOnBg(event,'modal-answers')">
   <div class="modal">
     <div class="modal-head">
-      <div><h2>Card sort activity</h2><p>Teacher guide — classroom physical activity</p></div>
-      <button class="close-btn" onclick="closeModal('modal-activity')">✕</button>
+      <div><h2>Match-up answers</h2><p>Technology → product — all 8 pairs</p></div>
+      <button class="close-btn" onclick="closeModal('modal-answers')">✕</button>
     </div>
     <div class="modal-body">
       <div class="info-block">
-        <div class="info-block-label">Objective</div>
-        <p>Students sort a set of product cards into two categories: <span>Technology Push</span> or <span>Market Pull</span> — and justify their decisions. Some cards are deliberately ambiguous to prompt discussion.</p>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Suggested category headers (print these)</div>
-        <div class="examples-grid">
-          <div class="ex-item" style="border-left: 3px solid #1A5296;"><div><div class="ex-name">Technology Push</div><div class="ex-sub">Innovation came first</div></div></div>
-          <div class="ex-item" style="border-left: 3px solid #B8430F;"><div><div class="ex-name">Market Pull</div><div class="ex-sub">Demand came first</div></div></div>
+        <div class="info-block-label">Complete your worksheet before checking</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+
+          <div class="answer-pair">
+            <div><div class="pair-num">1</div><div class="pair-tech">Semiconductor research into light emission</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">LED light bulbs</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">2</div><div class="pair-tech">Discovery of carbon fibre composite materials</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Lightweight racing bikes</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">3</div><div class="pair-tech">Military satellite positioning systems</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Satnav / smartphone maps</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">4</div><div class="pair-tech">Accidental discovery of hook-and-loop fastener inspired by plant burrs</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Velcro fasteners</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">5</div><div class="pair-tech">Development of Kevlar polymer fibres in a lab</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Bulletproof body armour</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">6</div><div class="pair-tech">Advances in 3D printing (additive manufacturing)</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Custom medical implants</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">7</div><div class="pair-tech">Capacitive touchscreen technology from research labs</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Smartphone touchscreens</div>
+          </div>
+
+          <div class="answer-pair">
+            <div><div class="pair-num">8</div><div class="pair-tech">Isolation of graphene — a single-atom-thick carbon layer</div></div>
+            <div class="pair-arrow">→</div>
+            <div class="pair-product">Graphene-enhanced electronics</div>
+          </div>
+
         </div>
       </div>
       <div class="info-block">
-        <div class="info-block-label">Suggested product cards to print and cut</div>
-        <div class="steps-list">
-          <div class="activity-box"><h4>Clear technology push examples</h4><p>Carbon fibre bikes · LED light bulbs · Touchscreen smartphones · Kevlar body armour · GPS navigation · 3D printed medical implants · Graphene-coated products</p></div>
-          <div class="activity-box"><h4>Clear market pull examples</h4><p>Eco-friendly packaging · Reusable coffee cups · Larger phone batteries · Allergen-free food labelling · Adjustable car seats · Quieter lawnmowers</p></div>
-          <div class="activity-box"><h4>Deliberately ambiguous cards (for discussion)</h4><p>Electric cars · Smart watches · Noise-cancelling headphones · Biodegradable plastics · Foldable phones</p></div>
-        </div>
-      </div>
-      <div class="info-block">
-        <div class="info-block-label">Extension question</div>
-        <p>Ask students: <span>"Can a product be both?"</span> Use electric cars as the discussion example — battery tech was pushed by research, but demand for lower emissions also pulled it.</p>
+        <div class="info-block-label">Extension answer — what to look for</div>
+        <p>A good answer names the <span>specific technology</span>, explains that it was developed <span>before any consumer demand existed</span>, and states that manufacturers then found a product application for it. Mentioning that marketing had to <span>create the demand</span> afterwards gets top marks.</p>
       </div>
     </div>
   </div>
@@ -417,7 +346,7 @@ body.dark {
 
 <script>
 function openModal(type) {
-  const map = { how:'modal-how', vs:'modal-vs', examples:'modal-examples', impacts:'modal-impacts', activity:'modal-activity' };
+  const map = { how:'modal-how', vs:'modal-vs', examples:'modal-examples', impacts:'modal-impacts', answers:'modal-answers' };
   document.getElementById(map[type]).classList.add('open');
 }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
